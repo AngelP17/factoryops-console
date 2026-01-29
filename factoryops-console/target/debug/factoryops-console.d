@@ -1,0 +1,1 @@
+/Users/apinzon/Desktop/Active\ Projects/factoryops-console/factoryops-console/target/debug/factoryops-console: /Users/apinzon/Desktop/Active\ Projects/factoryops-console/factoryops-console/src/app.rs /Users/apinzon/Desktop/Active\ Projects/factoryops-console/factoryops-console/src/main.rs /Users/apinzon/Desktop/Active\ Projects/factoryops-console/factoryops-console/src/ui.rs

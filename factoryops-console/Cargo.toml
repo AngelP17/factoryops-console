@@ -1,0 +1,18 @@
+[package]
+name = "factoryops-console"
+version = "0.1.0"
+edition = "2021"
+authors = ["Angel Pinzon <angelpinzon1706@gmail.com>"]
+description = "Zero-dependency TUI diagnostics for manufacturing environments"
+license = "MIT"
+repository = "https://github.com/angelpinzon/factoryops-console"
+
+[dependencies]
+futures = "0.3"
+ratatui = { version = "0.24", features = ["all-widgets"] }
+crossterm = { version = "0.27", features = ["event-stream"] }
+tokio = { version = "1.35", features = ["full"] }
+anyhow = "1.0"
+rand = "0.8"
+regex = "1.10"
+chrono = "0.4"
