@@ -1,6 +1,3 @@
-Here's the updated comprehensive documentation for your project:
-
-```markdown
 # FactoryOps Console
 
 A high-performance, asynchronous Terminal User Interface (TUI) for monitoring manufacturing infrastructure in headless, bandwidth-constrained environments.
@@ -17,7 +14,7 @@ When a **Line-1-Printer** (Zebra ZD621) goes down at 2 AM, engineers need immedi
 
 ## 🦀 The Solution
 
-FactoryOps Console is a **zero-dependency static binary** (under 10MB) that deploys via `scp` and runs directly in SSH sessions. Built with Rust and Tokio, it provides real-time infrastructure diagnostics with memory-safe concurrency and guaranteed terminal restoration (never leaves SSH sessions in "garbage" mode).
+FactoryOps Console is a **zero-dependency static binary** (~3MB) that deploys via `scp` and runs directly in SSH sessions. Built with Rust and Tokio, it provides real-time infrastructure diagnostics with memory-safe concurrency and guaranteed terminal restoration (never leaves SSH sessions in "garbage" mode).
 
 ### Key Systems Engineering Features
 
@@ -25,7 +22,7 @@ FactoryOps Console is a **zero-dependency static binary** (under 10MB) that depl
 |---------|---------------|---------------------|
 | **Async Concurrency** | `tokio::select!` multiplexing | UI responsive even when TCP handshakes to printers hang (2s timeout vs frozen dashboard) |
 | **Memory Safety** | Bounded `VecDeque` (1000 logs), `Vec` arenas (200 pts) | Prevents OOM on edge hardware running 24/5 for months |
-| **Zero-Cost Deploy** | Static `x86_64-unknown-linux-musl` binary | `scp` to any server, no Docker/systemd/apt required |
+| **Zero-Cost Deploy** | Static `aarch64-apple-darwin` / `x86_64-unknown-linux-musl` binary | `scp` to any server, no Docker/systemd/apt required |
 | **Visual Alerting** | Regex-based log highlighting (`[ERROR]` red, `[WARN]` yellow) | Spot "Line Down" issues instantly in scrolling logs |
 | **Terminal Safety** | `restore_terminal()` guarantee + `Drop` guard | Never corrupts shell state on panic/crash (critical for remote factories) |
 
@@ -34,7 +31,7 @@ FactoryOps Console is a **zero-dependency static binary** (under 10MB) that depl
 - **Language**: Rust 2021 Edition (memory safety without GC)
 - **UI Framework**: `ratatui` 0.24 (immediate-mode terminal rendering)
 - **Terminal Control**: `crossterm` 0.27 (cross-platform raw mode)
-- **Async Runtime**: `tokio` 1.35 (full feature set for concurrent I/O)
+- **Async Runtime**: `tokio` 1.49 (full feature set for concurrent I/O)
 - **Error Handling**: `anyhow` (zero-panic guarantee)
 - **Utilities**: `regex`, `chrono`, `futures`, `rand`
 
@@ -43,12 +40,12 @@ FactoryOps Console is a **zero-dependency static binary** (under 10MB) that depl
 ```bash
 # Clone repository
 git clone https://github.com/AngelP17/factoryops-console.git
-cd factoryops-console
+cd factoryops-console/factoryops-console
 
 # Run in simulation mode (generates fake metrics for demo)
 cargo run
 
-# Build optimized release binary (~5-8MB)
+# Build optimized release binary (~3MB)
 cargo build --release
 
 # Deploy to production server (static binary, no dependencies)
@@ -135,7 +132,11 @@ fn restore_terminal() -> Result<()> {
 
 ```
 factoryops-console/
+├── .agent/                 # AI coding assistant configuration & skills
+├── docs/
+│   └── documentation.md    # This file
 ├── Cargo.toml              # Dependencies: tokio, ratatui, crossterm, anyhow
+├── Cargo.lock              # Locked dependency versions
 └── src/
     ├── main.rs             # Terminal lifecycle, raw mode, panic safety
     ├── app.rs              # App state, Event enum, async run_app loop
@@ -252,8 +253,5 @@ MIT - Open source for manufacturing engineering community
 ## 👤 Author
 
 Angel Pinzon  
-Senior IT Systems Engineer & Strategist  
-portfolio: [apinzon.dev](https://apinzon.dev)
-```
-
-
+IT Systems Engineer & Strategist  
+Portfolio: [apinzon.dev](https://apinzon.dev)
