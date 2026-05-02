@@ -9,20 +9,6 @@ A high-performance, asynchronous Terminal User Interface (TUI) for monitoring ma
 
 Zero-dependency static binary (~3MB) that deploys via `scp` and runs directly in SSH sessions. Built with Rust and Tokio for real-time infrastructure diagnostics.
 
-## 📸 Screenshots
-
-### Main Dashboard
-
-Real-time infrastructure monitoring with CPU/Memory sparklines, factory floor device grid, and system logs.
-
-![FactoryOps Console - Main Dashboard](docs/screenshots/factoryops-main.png)
-
-### Device Detail View
-
-Per-device diagnostics showing network I/O, latency percentiles, packet loss, and thermal data.
-
-![FactoryOps Console - Device Detail](docs/screenshots/factoryops-device-detail.png)
-
 ## 🚀 Quick Start
 
 ```bash
